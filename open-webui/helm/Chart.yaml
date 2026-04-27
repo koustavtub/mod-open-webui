@@ -1,7 +1,7 @@
 apiVersion: v2
 name: open-webui
 version: 1.0.7
-originalVersion: 5.19.0
+# originalVersion: 5.19.0
 appVersion: 0.5.16
 home: https://www.openwebui.com/
 icon: >-
