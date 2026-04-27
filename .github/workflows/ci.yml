@@ -30,10 +30,10 @@ jobs:
         id: package
         run: |
           mkdir -p dist
-          helm dependency update ./helm
-          CHART_NAME="$(helm show chart ./helm | awk '/^name:/ {print $2; exit}')"
-          CHART_VERSION="$(helm show chart ./helm | awk '/^version:/ {print $2; exit}')"
-          helm package ./helm --destination dist
+          helm dependency update ./open-webui/helm
+          CHART_NAME="$(helm show chart ./open-webui/helm | awk '/^name:/ {print $2; exit}')"
+          CHART_VERSION="$(helm show chart ./open-webui/helm | awk '/^version:/ {print $2; exit}')"
+          helm package ./open-webui/helm --destination dist
           echo "chart_name=${CHART_NAME}" >> "$GITHUB_OUTPUT"
           echo "chart_version=${CHART_VERSION}" >> "$GITHUB_OUTPUT"
 
