@@ -137,6 +137,15 @@ spec:
           value: {{ .Values.keycloak.protocol }}://{{ $domainName }}/auth/realms/Hyperplane/.well-known/openid-configuration
         - name: OPENID_REDIRECT_URI
           value: https://{{ .Release.Name }}.{{ $domainName }}/oauth/oidc/callback
+        {{- if .Values.webuiUrl }}
+        - name: WEBUI_URL
+          value: {{ .Values.webuiUrl | trimSuffix "/" | quote }}
+        {{- else }}
+        - name: WEBUI_URL
+          value: https://{{ .Release.Name }}.{{ $domainName }}
+        {{- end }}
+        - name: WEBUI_AUTH_COOKIE_SECURE
+          value: "true"
         - name: OAUTH_SCOPES
           value: "openid profile email"
         {{- if .Values.onPrem.enabled }}
