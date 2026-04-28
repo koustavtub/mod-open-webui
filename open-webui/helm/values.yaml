@@ -114,11 +114,11 @@ podLabels:
 replicaCount: 1
 # -- Strategy for updating the workload manager: deployment or statefulset
 strategy: {}
-# -- Open WebUI image tags can be found here: https://github.com/open-webui/open-webui
+# -- Open WebUI image (custom fork with Neo4j/shakudo graph ingest; see upstream submodule).
 image:
-  repository: gcr.io/devsentient-infra/custom/custom/open-webui
-  tag: ""
-  pullPolicy: "IfNotPresent"
+  repository: ghcr.io/koustavtub/open-webui-fork
+  tag: latest-cuda
+  pullPolicy: IfNotPresent
 
 serviceAccount:
   enable: true
@@ -250,6 +250,13 @@ extraEnvVars:
   #   secretKeyRef:
   #     name: pipelines-api-key
   #     key: api-key
+  # Optional: route file-ingestion text to your Shakudo Neo4j graph tool (JWT from the browser request is forwarded on Authorization).
+  - name: NEO4J_GRAPH_INGEST
+    value: "false"
+  - name: SHAKUDO_NEO4J_GRAPH_TOOL_MICROSERVICE
+    value: ""
+  # - name: SHAKUDO_NEO4J_INGEST_TIMEOUT
+  #   value: "120"
   # - name: OPENAI_API_KEY
   #   valueFrom:
   #     secretKeyRef:
