@@ -214,8 +214,9 @@ persistence:
 # -- Node labels for pod assignment.
 # Shakudo schedules stack components on nodes labeled hyperplane-stack-component-pool (see official chart).
 # An empty selector lets pods land on other pools; control-plane/stack discovery typically expects workloads on this pool.
-nodeSelector:
-  hyperplane.dev/nodeType: hyperplane-stack-component-pool
+nodeSelector: {}
+  # Value must be a string (node label values are strings, never `{}`).
+  # hyperplane.dev/nodeType: hyperplane-stack-component-pool
 
 # -- Tolerations for pod assignment
 tolerations: []
