@@ -112,17 +112,6 @@ Create labels to include on chart all Open WebUI resources
 {{- end }}
 
 {{/*
-Labels aligned with hyperplane/virtual-service.yaml for Shakudo discovery on workloads & services,
-not only on the VirtualService.
-*/}}
-{{- define "open-webui.hyperplaneLabels" -}}
-app: {{ .Release.Name }}
-release: {{ quote .Release.Name }}
-hyperplane.dev/stack-component: {{ .Release.Name }}
-hyperplane-service-name: {{ include "open-webui.name" . }}
-{{- end }}
-
-{{/*
 Create selector labels to include on chart all Ollama resources
 */}}
 {{- define "ollama.selectorLabels" -}}
