@@ -212,8 +212,8 @@ persistence:
   annotations: {}
 
 # -- Node labels for pod assignment.
-nodeSelector:
-  hyperplane.dev/nodeType: hyperplane-stack-component-pool
+nodeSelector: {}
+  #hyperplane.dev/nodeType: hyperplane-system-pool
 
 # -- Tolerations for pod assignment
 tolerations: []
